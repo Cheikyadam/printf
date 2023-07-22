@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			{
 				s = va_arg(ap, char *);
 				if (s == NULL)
-					write(1, "(NULL)", 1);
+					write(1, (void*)"(NULL)", 1);
 				else
 					write(1, s, 1);
 			}
@@ -35,13 +35,13 @@ int _printf(const char *format, ...)
 			{
 
 				if (format[i + 1] == 'c')
-					write(1, va_arg(ap, char));
+					write(1, va_arg(ap, int), 1);
 				else
-					write(1, '%', 1);
+					write(1, (void*) '%', 1);
 			}
 			i++;
 		}
-		write(1, format[i], 1);
+		_putchar(format[i]);
 	}
 	va_end(ap);
 	return (i);
