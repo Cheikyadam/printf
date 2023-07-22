@@ -13,7 +13,6 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int i;
-	char *s;
 
 	if (format == NULL)
 		return (0);
@@ -23,25 +22,23 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == 's')
+			switch (format[i + 1])
 			{
-				s = va_arg(ap, char *);
-				if (s == NULL)
-					write(1, (void*)"(NULL)", 1);
-				else
-					write(1, s, 1);
-			}
-			else
-			{
-
-				if (format[i + 1] == 'c')
-					write(1, va_arg(ap, int), 1);
-				else
-					write(1, (void*) '%', 1);
+				case 's':
+					handler_s(va_arg(ap, char *));
+					break;
+				case 'c':
+					handler_c(va_arg(ap, int));
+					break;
+				default:
+					_putchar(format[i]);
+					break;
+				
 			}
 			i++;
 		}
-		_putchar(format[i]);
+		else
+			_putchar(format[i]);
 	}
 	va_end(ap);
 	return (i);
