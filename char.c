@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * handler_c: handler of %c
- * @s: the string
+ * handler_c - handler of %c
+ * @c: the string
  *
  * Return: Nothing
  */

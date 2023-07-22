@@ -13,6 +13,9 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int i;
+	int l;
+	char *s;
+	int nb_car = 0;
 
 	if (format == NULL)
 		return (0);
@@ -25,21 +28,27 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 's':
-					handler_s(va_arg(ap, char *));
+					s = va_arg(ap, char *);
+					l = len(s);
+					handler_s(s, l);
+					nb_car += l;
 					break;
 				case 'c':
 					handler_c(va_arg(ap, int));
+					nb_car += 1;
 					break;
 				default:
 					_putchar(format[i]);
 					break;
-				
 			}
 			i++;
 		}
 		else
+		{
 			_putchar(format[i]);
+			nb_car += 1;
+		}
 	}
 	va_end(ap);
-	return (i);
+	return (nb_car);
 }
