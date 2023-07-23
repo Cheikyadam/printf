@@ -1,10 +1,13 @@
 #include "main.h"
+
 /**
-*_putchar - fun that prints a char
-*@sp_ch: character we want to print on terminal
-*Return: -1 if there is error, 1 otherwise
-*/
-int _putchar(char sp_ch)
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
 {
-	return (write(1, &sp_ch, 1)); /* 1 for write on the stander output */
+	return (write(1, &c, 1));
 }
