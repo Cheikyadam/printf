@@ -1,13 +1,15 @@
 #include "main.h"
 
 /**
- * handler_c - handler of %c
- * @c: the string
- *
- * Return: Nothing
+ * printf_char - prints a char.
+ * @val: arguments.
+ * Return: 1.
  */
-
-void handler_c(int c)
+int printf_char(va_list val)
 {
-	_putchar(c);
+	char s;
+
+	s = va_arg(val, int);
+	_putchar(s);
+	return (1);
 }
