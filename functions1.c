@@ -1,6 +1,5 @@
 #include "main.h"
 
-/************************* PRINT UNSIGNED NUMBER *************************/
 /**
  * print_unsigned - Prints an unsigned number
  * @types: List a of arguments
@@ -9,6 +8,7 @@
  * @width: get width
  * @precision: Precision specification
  * @size: Size specifier
+ *
  * Return: Number of chars printed.
  */
 int print_unsigned(va_list types, char buffer[],
